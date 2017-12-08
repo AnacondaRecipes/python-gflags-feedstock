@@ -1,4 +1,4 @@
-{% set version = "2.0" %}
+{% set version = "3.1.2" %}
 
 package:
   name: python-gflags
@@ -6,30 +6,41 @@ package:
 
 source:
   fn: python-gflags-{{ version }}.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-gflags/python-gflags-{{ version }}.tar.gz
-  md5: 23c9a793959a54971b1f094b0c6d03b1
+  url: https://pypi.io/packages/source/p/python-gflags/python-gflags-{{ version }}.tar.gz
+  md5: 7ea1cd4ea99f1a0b0692abf9607958e0
 
 build:
-  number: 1
-  skip: True  # [py3k]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  script: python setup.py install
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
-
   run:
     - python
+    - six
 
 test:
   imports:
     - gflags
 
 about:
-  home: https://github.com/google/python-gflags
+  home: https://github.com/gflags/python-gflags
   license: BSD 3-Clause
-  summary: Google Commandline Flags Module for Python
+  license_family: BSD
+  license_file: COPYING
+  summary: Google Commandline Flags Module
+  description: |
+    Python-gflags is a Python implementation of the Google commandline flags
+    module. gflags defines a distributed command line system, replacing systems
+    like getopt(), optparse and manual argument processing. Rather than an
+    application having to define all flags in or near main(), each Python
+    module defines flags that are useful to it. When one python module imports
+    another, it gains access to the other's flags.
+  doc_url: https://pypi.python.org/pypi/python-gflags/3.1.2
+  doc_source_url: https://github.com/google/python-gflags
+  dev_url: https://github.com/gflags/python-gflags
+
 
 extra:
   recipe-maintainers:
